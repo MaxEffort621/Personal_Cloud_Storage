@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Personal Cloud Storage</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Personal Cloud Storage</h1>
+
+    <section class="upload">
+      <h2>Upload a file</h2>
+      <input type="file" id="fileInput">
+      <input type="text" id="folderInput" placeholder="Folder (optional)">
+      <button id="uploadBtn">Upload</button>
+    </section>
+
+    <section class="search">
+      <h2>Search</h2>
+      <input type="text" id="searchInput" placeholder="Search files by name">
+      <button id="searchBtn">Search</button>
+    </section>
+
+    <section class="files">
+      <h2>Available files</h2>
+      <ul id="fileList"></ul>
+    </section>
+
+    <section class="analytics">
+      <h2>Analytics</h2>
+      <pre id="analyticsPre">Loading...</pre>
+    </section>
+  </div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
