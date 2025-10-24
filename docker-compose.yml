@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: cloud_backend
+    ports:
+      - "5001:5001"
+    volumes:
+      - file_storage:/data
+    networks:
+      - cloudnet
+    # Healthcheck is now defined in the Dockerfile, but can also be here.
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+
+  frontend:
+    build: ./frontend
+    container_name: cloud_frontend
+    ports:
+      - "8888:80"
+    depends_on:
+      backend:
+        condition: service_healthy # The backend Dockerfile has the healthcheck
+    networks:
+      - cloudnet
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+
+networks:
+  cloudnet:
+    driver: bridge
+
+volumes:
+  file_storage:
+    driver: local
